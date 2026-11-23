@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Simulador de triagem do MED (Pix)</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="container">
+    <h1>Simulador de triagem do MED (Pix)</h1>
+    <p class="aviso-vigencia" id="aviso-vigencia"></p>
+
+    <form id="formulario" novalidate>
+      <label for="situacao">O que aconteceu?</label>
+      <select id="situacao" required>
+        <option value="">Selecione</option>
+        <option value="falha_operacional">Falha operacional (erro do sistema, duplicidade interna)</option>
+        <option value="invasao">Invasão ou acesso sem autorização à minha conta</option>
+        <option value="golpe">Golpe: fui enganado(a) e fiz o Pix</option>
+        <option value="coercao">Coerção (fui forçado(a) a fazer o Pix)</option>
+        <option value="loja_fraudadora">Loja ou vendedor fraudador (nunca enviou nada ou enviou algo totalmente diferente)</option>
+        <option value="desacordo">Desacordo comercial (atraso, produto que não agradou)</option>
+        <option value="erro_proprio">Erro meu (chave errada, arrependimento)</option>
+      </select>
+
+      <label for="dias">Dias desde a transação</label>
+      <input type="number" id="dias" min="0" step="1" inputmode="numeric" required>
+
+      <fieldset>
+        <legend>Só para gerar orientações (não muda a elegibilidade)</legend>
+
+        <label for="bo">Boletim de ocorrência</label>
+        <select id="bo">
+          <option value="nao">Ainda não registrei</option>
+          <option value="sim">Já registrei</option>
+        </select>
+      </fieldset>
+
+      <button type="submit">Analisar</button>
+    </form>
+
+    <section id="resultado" class="oculto" aria-live="polite"></section>
+
+    <p class="rodape">Projeto educacional. Não substitui orientação jurídica nem a análise do seu banco.</p>
+  </main>
+
+  <script src="database.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
